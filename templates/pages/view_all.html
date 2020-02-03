@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+            {% for x in all %}
+                <div class="col-sm-6" style="border: 1px solid gray">
+                    <p>{{x.first_name}} {{ x.last_name }}</p>
+                    <p>{{x.email}}</p>
+                    <p>Last logged in: {{x.last_login}}</p>
+                </div>
+            {% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock %}

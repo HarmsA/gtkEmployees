@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Bio Page{% endblock %}
+
+{% block content %}
+<div>
+    <img src="{{ user.img }}" alt="User image">
+</div>
+<div>
+    <h1>{{ user.first_name}} {{ user.last_name }}</h1>
+    <p>
+    {{ user.bio }}
+    </p>
+<ul>
+    <li>
+        Works for: {{ user.boss }}
+    </li>
+    <li>
+        Date of Birth: {{ user.dob }}
+    </li>
+    <li>
+        Job Title: {{ user.job_title }}
+    </li>
+    <li>
+        Image : <img src="{{ user.portrait.url }}" alt="">
+    </li>
+</ul>
+</div>
+    <button type=""></button>
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load static %}
+{#<link rel="stylesheet" href="{% static 'css/home.css' %}">#}
+{% block title %}Welcome to Get to know!{% endblock title %}
+
+{% block content %}
+{#{% if user %}#}
+    {{ user.email }} {{ user.first_name }} {{ user.last_name }}
+{#    {% endif %}#}
+    <h1>Get to know your employees, friend, coworkers, church members, etc.</h1>
+    <p>
+        This website allows a group of people to get to know each other better. The information you
+        provide is up to you, there are many catagories that you can add to your profile so when
+        people in your authorized group see you they can start getting to know you.
+    </p>
+    <p>
+        How great would it be to go to a social event, work party, or an after church event and know most of the people in the room
+        and have a great conversation with them.
+    </p>
+    <img src="{% static 'images/getting-to-know-you.jpeg' %}" class="img-fluid" alt="FalconX launch"/>
+
+{% endblock content %}
+

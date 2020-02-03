@@ -1,0 +1,94 @@
+{% extends '_base.html' %}
+
+{% block title %}Quiz page{% endblock %}
+
+{% block content %}
+<h1>Quiz page</h1>
+    {% for i in all %}
+        {% if i.id != user.id %}
+            {{ i.first_name }} {{ i.last_name }} {{ i.id }}
+        {% endif %}
+    {% endfor %}
+    {{ quiz_size }}
+    <form action="" method="POST">
+    {% csrf_token %}
+        <label for="quiz_sizer">Would you like to make this quiz a different length?</label>
+        <input type="number" name="quiz_sizer">
+        <button type="submit">Change Quiz</button>
+    </form>
+    
+    <div class="quiz_container">
+    <div style="padding: 20px">
+        <img style="height: 300px; width: auto" src="../../static/images/h1.jpg" alt="">
+{#        <img style="height: 300px; width: auto" src="{{ i.pic }}" alt="Quiz User Image">#}
+        <div class="quiz_info">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Input First Name">
+                <input type="text" name="name" placeholder="Input Last Name">
+            </form>
+        </div>
+    </div>
+{#    </div>#}
+{##}
+{#    <div class="center_list">#}
+{# Employee quiz #}
+      <form class="form-horizontal ajax_form" id="user_quiz_form" action="/employees/verify_quiz_entry/" method="post" enctype="multipart/form-data" autocomplete="off" >
+      {% csrf_token %}
+
+        <div class="form-group" id="form-group">
+            <label class="control-label col-sm-4" for="fname" >First Name:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="fname" placeholder="First name" name="fname" autofocus>
+            </div>
+        </div>
+          {% if i.pname %}
+        <div class="form-group" id="form-group">
+            <label class="control-label col-sm-4" for="pname">Preferred Name:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="pname" placeholder="Leave blank if none" name="pname">
+            </div>
+        </div>
+          {% endif %}
+        <div class="form-group" id="form-group">
+            <label class="control-label col-sm-4" for="lname">Last Name:</label>
+            <div class="col-sm-6">
+                <input autocomplete="off" type="text" class="form-control" id="lname" placeholder="Last name" name="lname">
+            </div>
+        </div>
+          <input type="hidden"  name="id" value="{{ employee.id }}">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit"  class="employee_quiz_button">
+            </div>
+        </div>
+  </form>
+
+  <div id="person_info">
+  </div>
+
+    <script>
+
+        $('#user_quiz_form').submit(function(e) {
+            console.log('button.html is clicked')
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action') ,
+                method:'post',
+                data: $(this).serialize(),
+                success: function (serverResponse) {
+                    console.log("Success, Server Response: ", serverResponse);
+                    $('#person_info').html(serverResponse)
+                }
+            });
+        })
+    </script>
+
+</div>
+
+    <br><br><br>
+
+</div>
+
+
+{% endblock content %}

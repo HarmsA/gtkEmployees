@@ -1,0 +1,36 @@
+.menu_list {
+    list-style-type: none;
+    text-align: center;
+    padding-top: 10px;
+}
+.menu_list li {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 1.25em;
+    border-right: 2px solid dimgrey;
+color: white;
+}
+.menu_list ul li a {
+    color: white;
+}
+.menu_list li:hover {
+    font-size: 1.3em;
+}
+.menu_list ul li a:hover {
+    text-decoration: none;
+}
+.menu_list li:last-child {
+    padding-right: 0;
+    border-right: none;
+}
+.menu_list li ul {
+    text-decoration: none;
+
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%
+}
